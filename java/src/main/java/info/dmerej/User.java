@@ -1,58 +1,45 @@
 package info.dmerej;
 
 public class User {
-    private String name;
-    private String email;
-    private Address address;
+    private final boolean isAmerican;
+    private final boolean isMajor;
+    private final boolean isVerified;
 
-    private boolean isMajor;
-    private boolean isVerified;
-
-    public String getName() {
-        return name;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public Address getAddress() {
-        return address;
+    public boolean isAmerican() {
+        return isAmerican;
     }
 
     public boolean isMajor() {
         return isMajor;
     }
+
     public boolean isVerified() {
         return isVerified;
     }
 
     private User(UserBuilder builder){
-        this.name = builder.name;
-        this.email = builder.email;
-        this.address = builder.address;
+        this.isAmerican = builder.isAmerican;
         this.isMajor = builder.isMajor;
         this.isVerified = builder.isVerified;
     }
 
     static class UserBuilder {
-        private String name;
-        private String email;
-        private Address address;
-        private boolean isMajor;
-        private boolean isVerified;
+        private boolean isAmerican = true;
+        private boolean isMajor = true;
+        private boolean isVerified = true;
 
-        public UserBuilder(String name, String email, Address address){
-            this.name = name;
-            this.email = email;
-            this.address = address;
-        }
-
-        public UserBuilder isMajor(boolean isMajor){
-            this.isMajor = isMajor;
+        public UserBuilder isNotMajor(){
+            this.isMajor = false;
             return this;
         }
 
-        public UserBuilder isVerified(boolean isVerified){
-            this.isVerified = isVerified;
+        public UserBuilder isNotVerified(){
+            this.isVerified = false;
+            return this;
+        }
+
+        public UserBuilder isNotAmerican(){
+            this.isAmerican = false;
             return this;
         }
 
