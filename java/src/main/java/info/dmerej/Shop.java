@@ -5,7 +5,8 @@ public class Shop {
         boolean minor = user.age() < 18;
         boolean verified = user.verified();
 
-        return !minor;
+        return !minor && verified;
+
     }
 
     public static boolean mustPayForeignFee(User user) {
